@@ -1,0 +1,12 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#      security:
+#        enable: false
+
+info:
+  company.name: org.jiang
+  company.address: 四川成都
+  description: ${spring.application.name}

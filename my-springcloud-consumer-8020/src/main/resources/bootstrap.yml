@@ -1,0 +1,49 @@
+server:
+  port: 8020
+eureka:
+  instance:
+    hostname: localhost
+#    preferIpAddress: true
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka #注册中心地址
+spring:
+  application:
+    name: eureka-client-ribbon
+  cloud:
+    config:
+      uri: http://localhost:8030
+  profiles:
+    active: dev
+
+feign:
+  client:
+    config:
+#      springcloud-eureka-client-provider:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+#        loggerLevel: full
+#        errorDecoder: com.example.SimpleErrorDecoder
+#        retryer: com.example.SimpleRetryer
+#        requestInterceptors:
+#          - com.example.FooRequestInterceptor
+#          - com.example.BarRequestInterceptor
+#        decode404: false
+#        encoder: com.example.SimpleEncoder
+#        decoder: com.example.SimpleDecoder
+#        contract: com.example.SimpleContract
+      default:
+        connectTimeout: 1000
+        readTimeout: 1000
+        loggerLevel: basic
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  metrics:
+    enabled: true
+  dashboard:
+    proxy-stream-allow-list:
+      -  localhost

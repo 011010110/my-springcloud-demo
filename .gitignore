@@ -1,0 +1,14 @@
+*.iml
+/.idea
+*.cmd
+/my-springcloud-config/mvnw
+/my-springcloud-config/.mvn
+/my-springcloud-config/HELP.md
+/my-springcloud-consumer-8020/.mvn
+/my-springcloud-consumer-8020/target/classes/org/jiang/myspringcloudconsumer/*.class
+/my-springcloud-consumer-8020/target
+HELP.md
+*.class
+.mvn
+mvnw
+target

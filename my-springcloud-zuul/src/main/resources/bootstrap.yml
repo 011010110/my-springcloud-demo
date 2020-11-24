@@ -1,0 +1,21 @@
+server:
+  port: 8080
+eureka:
+  instance:
+    hostname: localhost
+#    preferIpAddress: true
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka #注册中心地址
+spring:
+  application:
+    name: my-springcloud-zuul
+zuul:
+  routes:
+    consumer:
+      path: /consumer/**
+      serviceId: eureka-client-ribbon
+    servicer:
+      path: /servicer/**
+      serviceId: springcloud-eureka-client-provider
