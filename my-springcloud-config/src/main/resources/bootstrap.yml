@@ -3,6 +3,16 @@ server:
 spring:
   application:
     name: my-springcloud-config
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/011010110/my-springcloud-demo.git
+#          username: 582966876@qq.com
+#          password: lilinhua911
+#          search-paths: /my-springcloud-config/src/main/resources/config
+#      label: master
+#    本地配置文件
   cloud:
     config:
       server:
@@ -10,6 +20,7 @@ spring:
           search-locations: classpath:/config
   profiles:
     active: native
+
 
 eureka:
   instance:

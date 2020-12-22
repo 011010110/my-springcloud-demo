@@ -13,9 +13,19 @@ spring:
     name: eureka-client-ribbon
   cloud:
     config:
+      fail-fast: true
+#      通过注册中心，可以配置集群实现高可用
+#      discovery:
+#        service-id: my-springcloud-config
+  #      指定配置服务地址
       uri: http://localhost:8030
   profiles:
     active: dev
+#  zipkin:
+#    base-url: http://localhost:1941
+  sleuth:
+    sampler:
+      probability: 1.0
 
 feign:
   client:
@@ -47,3 +57,4 @@ hystrix:
   dashboard:
     proxy-stream-allow-list:
       -  localhost
+

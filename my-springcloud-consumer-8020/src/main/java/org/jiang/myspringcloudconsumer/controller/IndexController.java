@@ -2,6 +2,8 @@ package org.jiang.myspringcloudconsumer.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.jiang.myspringcloudconsumer.service.FeignHelloService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.io.IOException;
 
 @RestController
 public class IndexController {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private RestTemplate restTemplate;
@@ -40,6 +44,7 @@ public class IndexController {
     @GetMapping("hello")
     @HystrixCommand(fallbackMethod = "hystrixError")
     public String hello(String name){
+        logger.info("Controller hello() 方法调用");
         String url ="http://springcloud-eureka-client-provider/hello?name="+name;
         String result = restTemplate.getForObject(url, String.class);
         return result;
@@ -51,6 +56,7 @@ public class IndexController {
 
     @GetMapping("feignHello")
     public String feignHello(String name){
+        logger.info("Controller feignHello() 方法调用");
         return feignHelloService.hello(configFoo+"----feign."+name);
     }
 

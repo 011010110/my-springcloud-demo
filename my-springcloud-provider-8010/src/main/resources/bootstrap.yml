@@ -11,3 +11,8 @@ eureka:
 spring:
   application:
     name: springcloud-eureka-client-provider
+#  zipkin:
+#    base-url: http://localhost:1941
+  sleuth:
+    sampler:
+      probability: 1.0
